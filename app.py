@@ -74,6 +74,82 @@ def create_app(test_config=None):
     }), 200
 
 
+  @app.route('/businesses', methods=['POST'])
+  def post_business():
+    body = request.get_json()
+    id = body.get('id', None)
+    name = body.get('name', None)
+    address = body.get('address', None)
+    phone = body.get('phone', None)
+    cif = body.get('cif', None)
+    email = body.get('email', None)
+
+    try:
+      if id is None:
+        business = Business(name=name, address=address, phone=phone, cif=cif, email=email)
+      else:
+        business = Business(id=id, name=name, address=address, phone=phone, cif=cif, email=email)
+      business.insert()
+    except:
+      abort(422)
+        
+    return jsonify({
+      'success': True,
+      'business' : business.long(),
+      'status': 200
+    }), 200
+
+
+  @app.route('/businesses', methods=['PATCH'])
+  def patch_business():
+    body = request.get_json()
+    id = body.get('id', None)
+    name = body.get('name', None)
+    address = body.get('address', None)
+    phone = body.get('phone', None)
+    cif = body.get('cif', None)
+    email = body.get('email', None)
+
+    try:
+      business = Business.query.filter(Business.id == id).one_or_none()
+      if name is not None:
+        business.name = name
+      if address is not None:
+        business.address = address
+      if phone is not None:
+        business.phone = phone
+      if cif is not None:
+        business.cif = cif
+      if email is not None:
+        business.email = email
+      business.insert()
+    except:
+      abort(422)
+        
+    return jsonify({
+      'success': True,
+      'business' : business.long(),
+      'status': 200
+    }), 200
+
+
+
+  @app.route('/business/<int:id>', methods=['DELETE'])
+  def delete_business(id):
+    business = Business.query.filter(Business.id == id).one_or_none()
+
+    if filter is None:
+      abort(404)
+    else:
+      business.delete()
+
+
+
+
+
+
+
+
   @app.errorhandler(404)
   def not_found(error):
     return jsonify({
