@@ -20,12 +20,13 @@ def create_app(test_config=None):
 
 
   @app.route('/businesses')
+  @requires_auth('get:businessess')
   def get_businesses():
     businesses = Business.query.all()
     businesses_formatted = [business.short() for business in businesses]
 
     if len(businesses) == 0:
-        abort(400)
+        abort(404)
     
     return jsonify({
       'success': True,
@@ -43,15 +44,16 @@ def create_app(test_config=None):
   
     return jsonify({
       'success': True,
-      'customer' : business.short(),
+      'customer' : business.long(),
       'status': 200
     }), 200
 
 
   @app.route('/customers')
-  def get_customer():
+  @requires_auth('get:customers')
+  def get_customer(payload):
     customers = Customer.query.all()
-    customers_formatted = [customer.short() for customer in customers]
+    customers_formatted = [customer.long() for customer in customers]
 
     if len(customers) == 0:
         abort(400)
@@ -65,20 +67,22 @@ def create_app(test_config=None):
   
 
   @app.route('/customers/<int:id>')
-  def get_customer_by_id(id):
+  @requires_auth('get:customers-detail')
+  def get_customer_by_id(payload, id):
     customer = Customer.query.filter(Customer.id == id).one_or_none()
     if customer is None:
         abort(404)
   
     return jsonify({
       'success': True,
-      'customer' : customer.short(),
+      'customer' : customer.long(),
       'status': 200
     }), 200
 
 
   @app.route('/businesses', methods=['POST'])
-  def post_business():
+  @requires_auth('post:business')
+  def post_business(payload):
     body = request.get_json()
     id = body.get('id', None)
     name = body.get('name', None)
@@ -104,7 +108,8 @@ def create_app(test_config=None):
 
 
   @app.route('/businesses', methods=['PATCH'])
-  def patch_business():
+  @requires_auth('post:business')
+  def patch_business(payload):
     body = request.get_json()
     id = body.get('id', None)
     name = body.get('name', None)
@@ -138,6 +143,7 @@ def create_app(test_config=None):
 
 
   @app.route('/businesses/<int:id>', methods=['DELETE'])
+  @requires_auth('delete:business')
   def delete_business(id):
     business = Business.query.filter(Business.id == id).one_or_none()
 
