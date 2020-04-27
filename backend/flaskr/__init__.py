@@ -3,6 +3,7 @@ from flask import Flask, request, abort, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from models import db_drop_and_create_all, setup_db, Business, Customer
+from auth import AuthError, requires_auth
 
 def create_app(test_config=None):
   # create and configure the app
@@ -16,6 +17,7 @@ def create_app(test_config=None):
   @app.route('/')
   def hello():
       return "OK"
+
 
   @app.route('/businesses')
   def get_businesses():
@@ -33,7 +35,8 @@ def create_app(test_config=None):
 
   
   @app.route('/businesses/<int:id>')
-  def get_business_by_id(id):
+  @requires_auth('get:business-detail')
+  def get_business_by_id(payload, id):
     business = Business.query.filter(Business.id == id).one_or_none()
     if business is None:
         abort(404)
@@ -138,16 +141,16 @@ def create_app(test_config=None):
   def delete_business(id):
     business = Business.query.filter(Business.id == id).one_or_none()
 
-    if filter is None:
+    if business is None:
       abort(404)
     else:
       business.delete()
 
-
-
-
-
-
+    return jsonify({
+      'success': True,
+      'business' : id,
+      'status': 200
+    }), 200
 
 
   @app.errorhandler(404)
@@ -184,6 +187,15 @@ def create_app(test_config=None):
         'error': 405,
         'message': "Method Not Allowed"
       }), 405
+
+  
+  @app.errorhandler(AuthError)
+  def auth_error(error):
+    return jsonify({
+        'success': False,
+        'error': error.status_code,
+        'message': error.error['description']
+    }), error.status_code
 
   return app
 
