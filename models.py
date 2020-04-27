@@ -133,7 +133,7 @@ class Customer(db.Model):
 
     '''
     short()
-        short form representation of the customer model
+        short form representation of the business model
     '''
     def short(self):
         return {
@@ -141,7 +141,6 @@ class Customer(db.Model):
             'name': self.name,
             'email': self.email,
             'phone': self.phone,
-            'address': self.address
         }
 
     '''
