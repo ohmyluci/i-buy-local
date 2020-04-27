@@ -137,7 +137,7 @@ def create_app(test_config=None):
 
 
 
-  @app.route('/business/<int:id>', methods=['DELETE'])
+  @app.route('/businesses/<int:id>', methods=['DELETE'])
   def delete_business(id):
     business = Business.query.filter(Business.id == id).one_or_none()
 
