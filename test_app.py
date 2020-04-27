@@ -19,6 +19,9 @@ class IBuyLocalTestCase(unittest.TestCase):
         #setup_db(self.app, self.database_path)
         setup_db(self.app)
 
+        self.BUSINESS_TOKEN = os.environ.get('BUSINESS_TOKEN')
+        self.CUSTOMER_TOKEN = os.environ.get('CUSTOMER_TOKEN')
+
         self.new_customer = {
             'name': "customer test",
             'address': "address test",
@@ -43,7 +46,8 @@ class IBuyLocalTestCase(unittest.TestCase):
     """
     # get questions without indicating pagination (default=1) should return success response
     def test_200_get_customers(self):
-        res = self.client().get('/customers')
+        auth_header = { 'Authorization': "Bearer {}".format(self.CUSTOMER_TOKEN) }
+        res = self.client().get('/customers', headers=auth_header)
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 200)
@@ -51,14 +55,14 @@ class IBuyLocalTestCase(unittest.TestCase):
 
     
     def test_get_businesses_bad_token(self):
-        auth_header = { 'Authorization': 'Bearer EyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjU5OTdQNGFTeHFSMEpOVTBQNXdJTyJ9.eyJpc3MiOiJodHRwczovL2Rldi1paTI0ci05cy5ldS5hdXRoMC5jb20vIiwic3ViIjoiZ29vZ2xlLW9hdXRoMnwxMTU1OTg0Njc2NTY1MTUzMjQ2NzkiLCJhdWQiOlsiaS1idXktbG9jYWwiLCJodHRwczovL2Rldi1paTI0ci05cy5ldS5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNTg4MDAxMTk2LCJleHAiOjE1ODgwODc1OTYsImF6cCI6IkpuSnF5T2QxYW9NcFZ5Zzh2QzdaQmxHQ2VBMUJqMDMwIiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCIsInBlcm1pc3Npb25zIjpbImdldDpidXNpbmVzcy1kZXRhaWwiXX0.kB0EOVUq6IpiX-ytq1j6Q8Oou78gvpEPD7dKprPWsr6BwdaRhubbkqPSC-lsYEsg4FnDLWIRnAUvHZoCvD0kbFUlIXABt3dYyFH9cF5nDVXWqTrc8oj32Pd2f5t0tuffLGvDs4wnXos4mTPT2v8s91teh75kiEY_orZZXccnNvl-wqk9sLK5a47wV5aaqqaYP7PboE8V2sA0LofhE-LebMPamYWERA0eYYkqTwRXJVfxDLNfqpKOpk0CZZoHI6pLlMWkZ-DnlMmFoaa1ZETwMtuC-h9pBiY0G6XvB0OwBJ2h8ae7h7QdEckR8jzMf2qIvQvVGap1d2_gUUU7XRsPYQ'}
+        auth_header = { 'Authorization': 'Bearer badtoken' }
         res = self.client().get('/businesses/1', headers=auth_header)
 
         self.assertEqual(res.status_code, 400)
 
 
     def test_get_businesses_good_token(self):
-        auth_header = { 'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjU5OTdQNGFTeHFSMEpOVTBQNXdJTyJ9.eyJpc3MiOiJodHRwczovL2Rldi1paTI0ci05cy5ldS5hdXRoMC5jb20vIiwic3ViIjoiZ29vZ2xlLW9hdXRoMnwxMTU1OTg0Njc2NTY1MTUzMjQ2NzkiLCJhdWQiOlsiaS1idXktbG9jYWwiLCJodHRwczovL2Rldi1paTI0ci05cy5ldS5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNTg4MDAxMTk2LCJleHAiOjE1ODgwODc1OTYsImF6cCI6IkpuSnF5T2QxYW9NcFZ5Zzh2QzdaQmxHQ2VBMUJqMDMwIiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCIsInBlcm1pc3Npb25zIjpbImdldDpidXNpbmVzcy1kZXRhaWwiXX0.kB0EOVUq6IpiX-ytq1j6Q8Oou78gvpEPD7dKprPWsr6BwdaRhubbkqPSC-lsYEsg4FnDLWIRnAUvHZoCvD0kbFUlIXABt3dYyFH9cF5nDVXWqTrc8oj32Pd2f5t0tuffLGvDs4wnXos4mTPT2v8s91teh75kiEY_orZZXccnNvl-wqk9sLK5a47wV5aaqqaYP7PboE8V2sA0LofhE-LebMPamYWERA0eYYkqTwRXJVfxDLNfqpKOpk0CZZoHI6pLlMWkZ-DnlMmFoaa1ZETwMtuC-h9pBiY0G6XvB0OwBJ2h8ae7h7QdEckR8jzMf2qIvQvVGap1d2_gUUU7XRsPYQ'}
+        auth_header = { 'Authorization': "Bearer {}".format(self.BUSINESS_TOKEN) }
         res = self.client().get('/businesses/1', headers=auth_header)
 
         data = json.loads(res.data)
