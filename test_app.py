@@ -14,9 +14,10 @@ class IBuyLocalTestCase(unittest.TestCase):
         """Define test variables and initialize app."""
         self.app = create_app()
         self.client = self.app.test_client
-        self.database_name = "i_buy_local"
-        self.database_path = "postgres://{}:{}@{}/{}".format('postgres','EresTonto','localhost:5432', self.database_name)
-        setup_db(self.app, self.database_path)
+        #self.database_name = "i_buy_local"
+        #self.database_path = "postgres://{}:{}@{}/{}".format('postgres','EresTonto','localhost:5432', self.database_name)
+        #setup_db(self.app, self.database_path)
+        setup_db(self.app)
 
         self.new_customer = {
             'name': "customer test",

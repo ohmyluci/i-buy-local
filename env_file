@@ -1,0 +1,1 @@
+DATABASE_URI='postgres://postgres:EresTonto@localhost:5432/i_buy_local'
