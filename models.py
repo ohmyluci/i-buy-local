@@ -6,7 +6,7 @@ import json
 
 database_name = "i_buy_local"
 database_path = "postgres://{}:{}@{}/{}".format('postgres','EresTont','localhost:5432', database_name)
-database_path = os.environ.get('DATABASE_URI', database_path)
+database_path = os.environ.get('DATABASE_URL', database_path)
 
 db = SQLAlchemy()
 
