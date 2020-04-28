@@ -20,7 +20,7 @@ def create_app(test_config=None):
 
 
   @app.route('/businesses')
-  @requires_auth('get:businessess')
+  @requires_auth('get:businesses')
   def get_businesses():
     businesses = Business.query.all()
     businesses_formatted = [business.short() for business in businesses]
