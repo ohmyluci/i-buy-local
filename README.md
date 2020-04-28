@@ -126,7 +126,7 @@ The API returns the next error types
 
 ### ENDPOINTS
 
-***GET /businesses   (Auth Required - get:businesses)***
+- ***GET /businesses   (Auth Required - get:businesses)***
 
 Get a list of all the business in the app showing non confidential information
 
@@ -155,7 +155,7 @@ response
 }
 ```
 
-***GET /businesses/<int:id>   (Auth required - get:business-details)***
+- ***GET /businesses/<int:id>   (Auth required - get:business-details)***
 
 Get complete information of a business
 
@@ -172,7 +172,7 @@ response
 }
 ```
 
-***POST /businesses   (Auth required - post:business)***
+- ***POST /businesses   (Auth required - post:business)***
 
 Create a new business
 
@@ -206,7 +206,7 @@ response
 }
 ```
 
-***PATCH /businesses   (Auth required - post:business)***
+- ***PATCH /businesses   (Auth required - post:business)***
 
 Edit an existing business
 
@@ -241,7 +241,7 @@ response
 ```
 
 
-***DELETE /businesses/<int:id>   (Auth required - delete:business)***
+- ***DELETE /businesses/<int:id>   (Auth required - delete:business)***
 
 Delete an existing business
 
@@ -257,7 +257,7 @@ response
 ```
 
 
-***GET /customers   (Auth Required - get:customers)***
+- ***GET /customers   (Auth Required - get:customers)***
 
 Get a list of all the customers in the app showing non confidential information
 
@@ -285,7 +285,7 @@ response
 }
 ```
 
-***GET /customers/<int:id>   (Auth required - get:customer-details)***
+- ***GET /customers/<int:id>   (Auth required - get:customer-details)***
 
 Get complete information of a customer
 
@@ -306,7 +306,7 @@ response
 }
 ```
 
-***POST /customers   (Auth required - post:customer)***
+- ***POST /customers   (Auth required - post:customer)***
 
 example `/customer` POST
 
@@ -336,7 +336,7 @@ response
 }
 ```
 
-***DELETE /customers/<int:id>   (Auth required - delete:customers)***
+- ***DELETE /customers/<int:id>   (Auth required - delete:customers)***
 
 Delete an existing customer
 
