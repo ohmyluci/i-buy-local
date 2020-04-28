@@ -200,4 +200,35 @@ response
 ```
 
 
+***PATCH /businesses   (Auth required - post:business)***
+
+example `/business` 
+
+PATCH body
+```
+{ 
+    'id':'10',
+    'name': 'business10_mod',
+    'address': 'address10_mod',
+    'phone':'phone10',
+    'cif':'cif10',
+    'email':'business10@business10.com'
+}
+
+response
+```
+{
+  "business": {
+    "address": "address10_mod",
+    "cif": "cif10",
+    "email": "business10@business10.com",
+    "id": 10,
+    "name": "business10_mod",
+    "phone": "phone10"
+  },
+  "status": 200,
+  "success": true
+}
+```
+
 
