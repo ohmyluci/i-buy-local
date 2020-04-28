@@ -49,6 +49,32 @@ def create_app(test_config=None):
     }), 200
 
 
+  @app.route('/customers', methods=['POST'])
+  @requires_auth('post:customer')
+  def post_customer(payload):
+    body = request.get_json()
+    id = body.get('id', None)
+    name = body.get('name', None)
+    address = body.get('address', None)
+    phone = body.get('phone', None)
+    email = body.get('email', None)
+
+    try:
+      if id is None:
+        customer = Customer(name=name, address=address, phone=phone, email=email)
+      else:
+        customer = Customer(id=id, name=name, address=address, phone=phone, email=email)
+      customer.insert()
+    except:
+      abort(422)
+        
+    return jsonify({
+      'success': True,
+      'business' : customer.long(),
+      'status': 200
+    }), 200
+
+
   @app.route('/customers')
   @requires_auth('get:customers')
   def get_customers(payload):
@@ -76,6 +102,22 @@ def create_app(test_config=None):
     return jsonify({
       'success': True,
       'customer' : customer.long(),
+      'status': 200
+    }), 200
+
+  @app.route('/customers/<int:id>', methods=['DELETE'])
+  @requires_auth('delete:customer')
+  def delete_customer(payolad, id):
+    customer = Customer.query.filter(Customer.id == id).one_or_none()
+
+    if customer is None:
+      abort(404)
+    else:
+      customer.delete()
+
+    return jsonify({
+      'success': True,
+      'customer' : id,
       'status': 200
     }), 200
 
