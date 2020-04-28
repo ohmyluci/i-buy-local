@@ -3,7 +3,9 @@
 ## Introduction
 In these days of quarantine because of the coronavirus effect, this application arises as an opportunity to put in touch local small business with the people living in the same neighborhood.
 
-The application works as a SAAS, where business and customers can create a profile and interact with each other.
+The application works as a SAAS, where businesses and customers can create a profile and interact with each other. The idea of the application is that businesses can create profile, upload products, and allow customers to make orders, chat with them, ask for takeaway orders, and much more.
+
+The curren application is not finished but meets the requirements to pass the rubric.
 
 
 ## Roles
