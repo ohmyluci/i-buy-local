@@ -155,7 +155,7 @@ response
 
 ***GET /businesses/<int:id>   (Auth required - get:business-details)***
 
-example `/business/2`
+example `/business/2`   GET
 
 response
 ```
@@ -170,7 +170,7 @@ response
 
 ***POST /businesses   (Auth required - post:business)***
 
-example `/business` 
+example `/business` POST
 
 POST body
 ```
@@ -182,6 +182,7 @@ POST body
     'cif':'cif10',
     'email':'business10@business10.com'
 }
+```
 
 response
 ```
@@ -199,10 +200,9 @@ response
 }
 ```
 
-
 ***PATCH /businesses   (Auth required - post:business)***
 
-example `/business` 
+example `/business`  PATCH
 
 PATCH body
 ```
@@ -214,6 +214,7 @@ PATCH body
     'cif':'cif10',
     'email':'business10@business10.com'
 }
+```
 
 response
 ```
@@ -231,4 +232,17 @@ response
 }
 ```
 
+
+***DELETE /businesses/<int:id>   (Auth required - delete:business)***
+
+example `/business/2`  DELETE
+
+response
+```
+{
+  "business": 2,
+  "status": 200,
+  "success": true
+}
+```
 
