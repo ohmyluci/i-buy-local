@@ -140,7 +140,7 @@ class Customer(db.Model):
             'id': self.id,
             'name': self.name,
             'email': self.email,
-            'phone': self.phone,
+            'phone': self.phone
         }
 
     '''
