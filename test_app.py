@@ -154,7 +154,7 @@ class IBuyLocalTestCase(unittest.TestCase):
 
 
     # Get list customers using valid customer token return a 200 status
-    def test_200_get_customers(self):
+    def test_200_get_customers_using_customer_token(self):
         auth_header = { 'Authorization': "Bearer {}".format(self.CUSTOMER_TOKEN) }
         res = self.client().get('/customers', headers=auth_header)
         data = json.loads(res.data)
@@ -162,7 +162,16 @@ class IBuyLocalTestCase(unittest.TestCase):
         self.assertEqual(res.status_code, 200)
         self.assertEqual(data['success'], True)
 
-##########
+
+    # Get list customers using business token return a 200 status
+    def test_200_get_customers_using_business_token(self):
+        auth_header = { 'Authorization': "Bearer {}".format(self.BUSINESS_TOKEN) }
+        res = self.client().get('/customers', headers=auth_header)
+        data = json.loads(res.data)
+
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(data['success'], True)
+
 
     # posting a customer using a customer role should create the customer and return 200
     def test_post_customer_using_customer_token(self):
