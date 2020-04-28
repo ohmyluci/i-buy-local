@@ -1,0 +1,840 @@
+{
+	"info": {
+		"_postman_id": "000cbede-cdf5-4415-91d0-9e6db80d91c5",
+		"name": "capstone-i-buy-local",
+		"description": "Set of request to test the api for the proyect \"i-buy-local\"",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "business",
+			"item": [
+				{
+					"name": "/",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "660934a2-d38b-4daf-bc10-21c535846572",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": "Just check the server is running and returning response"
+					},
+					"response": []
+				},
+				{
+					"name": "/businesses",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4f470d22-f8e5-4091-bc86-e7a1a3f36d41",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/businesses",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"businesses"
+							]
+						},
+						"description": "Get all businesses information"
+					},
+					"response": []
+				},
+				{
+					"name": "/businesses",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "716b5bd6-6771-4e0c-abc9-c0bf3aba831d",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": \"3\",\n\t\"name\": \"Business3\",\n    \"address\": \"Street 3\",\n    \"phone\": \"666666663\",\n    \"cif\" : \"XXXXXXXX3\",\n    \"email\": \"business3@business3.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/businesses",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"businesses"
+							]
+						},
+						"description": "Post a business"
+					},
+					"response": []
+				},
+				{
+					"name": "/businesses/1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0929e0b5-dbcd-4b1b-a49f-133d2a900e61",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{host}}/businesses/3",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"businesses",
+								"3"
+							]
+						},
+						"description": "Get business with id"
+					},
+					"response": []
+				},
+				{
+					"name": "/businesses",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "75838a2a-d37a-4d52-8d3b-eb97f1ce8868",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": \"4\",\n    \"name\": \"Business4_B\",\n    \"address\": \"Street 4\",\n    \"phone\": \"666666664\",\n    \"cif\" : \"XXXXXXXX4\",\n    \"email\": \"business4@business4.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/businesses",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"businesses"
+							]
+						},
+						"description": "Edit business"
+					},
+					"response": []
+				},
+				{
+					"name": "/businesses/3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d07e1693-c3be-4887-8b50-eb22a7cba330",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/businesses/3",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"businesses",
+								"3"
+							]
+						},
+						"description": "Delete business with id"
+					},
+					"response": []
+				},
+				{
+					"name": "/customers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8a330d8c-dc4d-476c-a602-4245fa2377d5",
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {",
+									"    pm.response.to.have.status(403);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": \"3\",\n\t\"name\": \"Customers3\",\n    \"address\": \"Street 3\",\n    \"phone\": \"666666663\",\n    \"email\": \"customer3@customer3.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/customers",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"customers"
+							]
+						},
+						"description": "Post a customer"
+					},
+					"response": []
+				},
+				{
+					"name": "/customers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "22bdf13e-dd75-4e93-b922-eb1da0d7f59c",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/customers",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"customers"
+							]
+						},
+						"description": "Get customer complete information (only customers can do it)"
+					},
+					"response": []
+				},
+				{
+					"name": "/customers/3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e1160542-289f-4c58-95c4-8ae8cf1471de",
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {",
+									"    pm.response.to.have.status(403);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/customers/3",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"customers",
+								"3"
+							]
+						},
+						"description": "Get customer complete information (only customers can do it)"
+					},
+					"response": []
+				},
+				{
+					"name": "/customers/3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5162b2ce-0246-44dd-8cc8-7705e6912f8d",
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {",
+									"    pm.response.to.have.status(403);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/customers/3",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"customers",
+								"3"
+							]
+						},
+						"description": "Delete business with id"
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjU5OTdQNGFTeHFSMEpOVTBQNXdJTyJ9.eyJpc3MiOiJodHRwczovL2Rldi1paTI0ci05cy5ldS5hdXRoMC5jb20vIiwic3ViIjoiZ29vZ2xlLW9hdXRoMnwxMTU1OTg0Njc2NTY1MTUzMjQ2NzkiLCJhdWQiOlsiaS1idXktbG9jYWwiLCJodHRwczovL2Rldi1paTI0ci05cy5ldS5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNTg4MDY2NDY5LCJleHAiOjE1ODgxNTI4NjksImF6cCI6IkpuSnF5T2QxYW9NcFZ5Zzh2QzdaQmxHQ2VBMUJqMDMwIiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTpidXNpbmVzcyIsImdldDpidXNpbmVzcy1kZXRhaWwiLCJnZXQ6YnVzaW5lc3NlcyIsImdldDpjdXN0b21lcnMiLCJwb3N0OmJ1c2luZXNzIl19.RnYftbJM1qpuQRqMfsBod45mqvHLV5X1B007Lum-u6FnWXHMnuIv050m8rLy4xf7KAvsTVWVga2t3zK28vAcknztH028HiqPlLWPuE-wxEZf0lk-0MUlgpcB8-Ertht86_FRduYPy6uld15EDSEmz25YsOXM6x_ObAHD3AJUa4Ij3Y8i1a78lfv5JvvETJ-h0wgptjLSfSA7hYr5gc5muWlOm1GjQqGJoSAkpx_vanDoI084c_GCDoHc1oBOGCa0mMtD7mda62Z6VOhgR7ioJlmDBBAp31DPekSWNvqcx2hNcx1qR5V9yDBPnh5S8JIv3RMNsLH6BPGDD6WBhoRRLQ",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "42605d1e-75fb-4f7a-ad78-8ed2c682a79b",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "e8210774-66bc-47e1-ba1c-53a2b1d13273",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "customer",
+			"item": [
+				{
+					"name": "/",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bd501d79-5f53-451a-9d9a-23adea90e4f5",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": "Just check the server is running and returning response"
+					},
+					"response": []
+				},
+				{
+					"name": "/businesses",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6c8a4de4-256b-43a1-a138-f12fef48b5ec",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/businesses",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"businesses"
+							]
+						},
+						"description": "Get all businesses information"
+					},
+					"response": []
+				},
+				{
+					"name": "/businesses/1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9ea906fa-bf4f-49af-a842-ac0ae103de69",
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {",
+									"    pm.response.to.have.status(403);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{host}}/businesses/3",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"businesses",
+								"3"
+							]
+						},
+						"description": "Get business with id"
+					},
+					"response": []
+				},
+				{
+					"name": "/businesses",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bfcf3c8a-38fd-4b82-b55f-e44155ab6ea1",
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {",
+									"    pm.response.to.have.status(403);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": \"3\",\n\t\"name\": \"Business3\",\n    \"address\": \"Street 3\",\n    \"phone\": \"666666663\",\n    \"cif\" : \"XXXXXXXX3\",\n    \"email\": \"business3@business3.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/businesses",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"businesses"
+							]
+						},
+						"description": "Post a business"
+					},
+					"response": []
+				},
+				{
+					"name": "/businesses",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "46d1e6ea-e95f-46c0-aabd-23913c45bd29",
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {",
+									"    pm.response.to.have.status(403);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": \"4\",\n    \"name\": \"Business4_B\",\n    \"address\": \"Street 4\",\n    \"phone\": \"666666664\",\n    \"cif\" : \"XXXXXXXX4\",\n    \"email\": \"business4@business4.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/businesses",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"businesses"
+							]
+						},
+						"description": "Edit business"
+					},
+					"response": []
+				},
+				{
+					"name": "/businesses/1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2432c34d-7a78-4ee4-a975-2a1079330fe5",
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {",
+									"    pm.response.to.have.status(403);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/businesses/3",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"businesses",
+								"3"
+							]
+						},
+						"description": "Delete business with id"
+					},
+					"response": []
+				},
+				{
+					"name": "/customers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "66b28ce5-41a6-4cac-945e-57f589ea3512",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/customers",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"customers"
+							]
+						},
+						"description": "Get customer complete information (only customers can do it)"
+					},
+					"response": []
+				},
+				{
+					"name": "/customers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "072367d1-0c1e-4ec6-821c-5138a3a4f9a3",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": \"3\",\n\t\"name\": \"Customers3\",\n    \"address\": \"Street 3\",\n    \"phone\": \"666666663\",\n    \"email\": \"customer3@customer3.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/customers",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"customers"
+							]
+						},
+						"description": "Post a customer"
+					},
+					"response": []
+				},
+				{
+					"name": "/customers/3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "130b9fad-bf2b-48eb-9123-b58a255274f5",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/customers/3",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"customers",
+								"3"
+							]
+						},
+						"description": "Get customer complete information (only customers can do it)"
+					},
+					"response": []
+				},
+				{
+					"name": "/customers/3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0403ee11-cea6-4c20-b975-303efc7c90f6",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/customers/3",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"customers",
+								"3"
+							]
+						},
+						"description": "Delete business with id"
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjU5OTdQNGFTeHFSMEpOVTBQNXdJTyJ9.eyJpc3MiOiJodHRwczovL2Rldi1paTI0ci05cy5ldS5hdXRoMC5jb20vIiwic3ViIjoiZ29vZ2xlLW9hdXRoMnwxMTU1OTg0Njc2NTY1MTUzMjQ2NzkiLCJhdWQiOlsiaS1idXktbG9jYWwiLCJodHRwczovL2Rldi1paTI0ci05cy5ldS5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNTg4MDY5MDc4LCJleHAiOjE1ODgxNTU0NzgsImF6cCI6IkpuSnF5T2QxYW9NcFZ5Zzh2QzdaQmxHQ2VBMUJqMDMwIiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTpjdXN0b21lciIsImdldDpidXNpbmVzc2VzIiwiZ2V0OmN1c3RvbWVyLWRldGFpbCIsImdldDpjdXN0b21lcnMiLCJwb3N0OmN1c3RvbWVyIl19.L6Q6qXcjLN61wOI6GA-Zj2PElk4PQKQYSvdmAAYIXiQjIfdknkypTypDZfpM6em32-GRV0syvogx8KObHUshY3FiF3RPlXWKsCptSxwMuztawEKEJuSiUmqPnt9LPEhwBKIoJIjCvipn3wHMzowEKBW-_TwlrOlWhurRbMY5pU4fW1zQ8bFHs38hty3sYeGAO-kcyrcLKpoJM93neGO7KoH3Lnok6vMlSxDuEx9E52_LKQ2KB1fJccggOga4Q2TfTGXtmzvkqymkbXu3stkq5_uoq218ZiiGbmwEhge3MXKMkMHdo7lkPWwbIpDDoKOPgEp3YAlby3jrK80mu44ekg",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "5831835b-584b-4971-b4f7-ec8a685f3c21",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "262ab50f-d55f-4c57-b6cb-c595448048ec",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "749a2ace-9bcb-433f-9d0f-5b6f7ce26294",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "50c94a51-fd82-4743-a2e8-0a4adb9514a9",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "ea3e2799-b7c4-461a-b5eb-9497b7e82eaa",
+			"key": "host",
+			"value": "localhost:5000",
+			"type": "string"
+		},
+		{
+			"id": "64a8b203-182c-4428-8e3d-dc1acb62c089",
+			"key": "host",
+			"value": "https://i-buy-local.herokuapp.com/",
+			"type": "string",
+			"disabled": true
+		}
+	],
+	"protocolProfileBehavior": {}
+}
