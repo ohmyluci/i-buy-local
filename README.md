@@ -65,14 +65,16 @@ If you want to test the code in local you need to create a database in postgres 
 
 To run the application in a local machine, you need to set the next environment variables
 ```
-   $env:FLASK_APP='app'
-   $env:FLASK_ENV='development'
-   flask run --reload
+$env:FLASK_APP='app'
+$env:FLASK_ENV='development'
+flask run --reload
 ```
 
 ## Testing the deployed app in Heroku
 
-You can test the application directly in the remote url hosted in heroku. The URL to access the API is https://i-buy-local.herokuapp.com/
+You can test the application directly in the remote url hosted in heroku. The URL to access the API is 
+
+    https://i-buy-local.herokuapp.com/
 
 The postman collection has been configured to access this url.
 
@@ -80,7 +82,7 @@ It has 2 folders, one called business, with a valid token including all the perm
 
 It is possible to run this collection and check that all the test sucess.
 
-These tests check the same APIs that the file test "test_app.py" does
+These tests check the same APIs that the file test `test_app.py` does
 
 
 ## API Reference
@@ -124,4 +126,32 @@ The API returns the next error types
 
 ### ENDPOINTS
 
-*GET 
+*GET /business (Auth Required - get:businesses)*
+
+Get a list of all the business in the app showing non confidential information
+
+example `/business`
+
+response
+```
+{
+  "businesses": [
+    {
+      "address": "Street 2",
+      "email": "business2@business2.com",
+      "id": 2,
+      "name": "Business2",
+      "phone": "666666662"
+    },
+    {
+      "address": "Street 4",
+      "email": "business4@business4.com",
+      "id": 4,
+      "name": "Business4_B",
+      "phone": "666666664"
+    }
+}
+```
+
+*GET /businesses/<int:id> (Auth required: - get:business-details)*
+
