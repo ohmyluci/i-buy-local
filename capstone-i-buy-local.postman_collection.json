@@ -141,13 +141,13 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/businesses/3",
+							"raw": "{{host}}/businesses/1",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"businesses",
-								"3"
+								"1"
 							]
 						},
 						"description": "Get business with id"
@@ -630,38 +630,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "66b28ce5-41a6-4cac-945e-57f589ea3512",
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{host}}/customers",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"customers"
-							]
-						},
-						"description": "Get customer complete information (only customers can do it)"
-					},
-					"response": []
-				},
-				{
-					"name": "/customers",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
 								"id": "072367d1-0c1e-4ec6-821c-5138a3a4f9a3",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
@@ -694,6 +662,38 @@
 							]
 						},
 						"description": "Post a customer"
+					},
+					"response": []
+				},
+				{
+					"name": "/customers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "66b28ce5-41a6-4cac-945e-57f589ea3512",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/customers",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"customers"
+							]
+						},
+						"description": "Get customer complete information (only customers can do it)"
 					},
 					"response": []
 				},
@@ -823,17 +823,17 @@
 	],
 	"variable": [
 		{
-			"id": "ea3e2799-b7c4-461a-b5eb-9497b7e82eaa",
+			"id": "175b9fe3-86de-4ab3-9d29-a7dedef43691",
 			"key": "host",
 			"value": "localhost:5000",
-			"type": "string"
-		},
-		{
-			"id": "64a8b203-182c-4428-8e3d-dc1acb62c089",
-			"key": "host",
-			"value": "https://i-buy-local.herokuapp.com/",
 			"type": "string",
 			"disabled": true
+		},
+		{
+			"id": "dcf56aea-c723-49bf-8905-4840be57b4e8",
+			"key": "host",
+			"value": "https://i-buy-local.herokuapp.com/",
+			"type": "string"
 		}
 	],
 	"protocolProfileBehavior": {}
