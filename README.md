@@ -289,32 +289,35 @@ response
 
 Get complete information of a customer
 
-example `/customers/2`   GET
+example `/customers/3`   GET
 
 response
 ```
 {
-    "address": "Street 2",
-    "email": "business2@business2.com",
-    "id": 2,
-    "name": "Business2",
-    "phone": "666666662"
+  "customer": {
+    "address": "Street 3",
+    "email": "customer3@customer3.com",
+    "id": 3,
+    "name": "Customers3",
+    "phone": "666666663"
+  },
+  "status": 200,
+  "success": true
 }
 ```
 
-***POST /businesses   (Auth required - post:business)***
+***POST /customers   (Auth required - post:customer)***
 
-example `/business` POST
+example `/customer` POST
 
 POST body
 ```
-{ 
-    'id':'10',
-    'name': 'business10',
-    'address': 'address10',
-    'phone':'phone10',
-    'cif':'cif10',
-    'email':'business10@business10.com'
+{
+	"id": "3",
+	"name": "Customers3",
+    "address": "Street 3",
+    "phone": "666666663",
+    "email": "customer3@customer3.com"
 }
 ```
 
@@ -322,13 +325,27 @@ response
 ```
 {
   "business": {
-    "address": "address10",
-    "cif": "cif10",
-    "email": "business10@business10.com",
-    "id": 10,
-    "name": "business10",
-    "phone": "phone10"
+    "address": "Street 3",
+    "email": "customer3@customer3.com",
+    "id": 3,
+    "name": "Customers3",
+    "phone": "666666663"
   },
+  "status": 200,
+  "success": true
+}
+```
+
+***DELETE /businesses/<int:id>   (Auth required - delete:business)***
+
+Delete an existing business
+
+example `/businesses/2`  DELETE
+
+response
+```
+{
+  "business": 2,
   "status": 200,
   "success": true
 }
