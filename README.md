@@ -1,41 +1,40 @@
 # I BUY LOCAL APPLICATION
 
-
-## INTRODUCTION
+## Introduction
 In these days of quarantine because of the coronavirus effect, this application arises as an opportunity to put in touch local small business with the people living in the same neighborhood.
 
 The application works as a SAAS, where business and customers can create a profile and interact with each other.
 
 
-## ROLES
+## Roles
 There are 2 different roles. Each role has been created in auth0 and have different permissions. For example, a business can see some information from customers, but not the long representation with condifential data, and same for customers.
 
-### BUSINESSES
+### Businesses
 A business represent a small local business which can create a profile and add products
 
-### CUSTOMERS
+### Customers
 A customer represent a person who wants to buy products from local businesses placed near to him
 
 
 ## CODE STRUCTURE
 
-- app.py: contains the basic structure to create the flask application, the endpoints in charge of responding to the frontend requests, and the error handles.
+- `app.py`: contains the basic structure to create the flask application, the endpoints in charge of responding to the frontend requests, and the error handles.
 
-- model.py: contains the models of the application. Businesses, Customers, and Products.
+- `model.py`: contains the models of the application. Businesses, Customers, and Products.
 
-- auth.py: contains the code to manage the auth0 authentication, looking for JWT tokens and decoding them. It launch an error when there is a problem with the token provided.
+- `auth.py`: contains the code to manage the auth0 authentication, looking for JWT tokens and decoding them. It launch an error when there is a problem with the token provided.
 
-- test_app.py: includes unittest for the different endpoints of the application
+- `test_app.py`: includes unittest for the different endpoints of the application
 
-- capstone-i-buy-local.postman: collection of test in postman
+- `capstone-i-buy-local.postman`: collection of test in postman
 
-- manage.py: code to carry out the migrations for heroku
+- `manage.py`: code to carry out the migrations for heroku
 
-- requirements.txt: all the needed packages that need to be installed
+- `requirements.txt`: all the needed packages that need to be installed
 
-- /migrations: include the migrations of the database
+- `/migrations`: include the migrations of the database
 
-- setup.sh: includes the environment variables needed to test the application
+- `setup.sh`: includes the environment variables needed to test the application
 
 
 
@@ -54,18 +53,22 @@ To activate it:
 
 Only the backend has been development so far, so there is no frontend. To check the responses, there is a postman collection with all the possible requests.
 
-From the main folder run 
+From the main folder run
+    
     pip install requirements.txt. 
+
 All required packages are included in the requirements file.
 
 If you want to test the code in local you need to create a database in postgres called 'i_buy_local' and set the next enviromental variable with the URL of your database
-$env:DATABASE_URL="postgres://{user}:{password}@localhost:{port}/i_buy_local"
+
+    $env:DATABASE_URL="postgres://{user}:{password}@localhost:{port}/i_buy_local"
 
 To run the application in a local machine, you need to set the next environment variables
+```
    $env:FLASK_APP='app'
    $env:FLASK_ENV='development'
    flask run --reload
-
+```
 
 ## Testing the deployed app in Heroku
 
