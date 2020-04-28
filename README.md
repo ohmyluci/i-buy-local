@@ -65,12 +65,23 @@ If you want to test the code in local you need to create a database in postgres 
 
     $env:DATABASE_URL="postgres://{user}:{password}@localhost:{port}/i_buy_local"
 
+
+If you are going to run the `test_app.py` with the unittest for the endpoints, you also need to provide the next envoironment variables, provide in the setup.sh
+```
+$env:CUSTOMER_TOKEN= get it from stup.sh
+$env:BUSINESS_TOKEN= get it from stup.sh
+$env:AUTH0_DOMAIN= get it from stup.sh
+$env:API_AUDIENCE= get it from stup.sh
+```
+
 To run the application in a local machine, you need to set the next environment variables
 ```
 $env:FLASK_APP='app'
 $env:FLASK_ENV='development'
 flask run --reload
 ```
+
+
 
 ## Testing the deployed app in Heroku
 
