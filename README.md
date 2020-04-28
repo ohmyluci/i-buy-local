@@ -126,11 +126,140 @@ The API returns the next error types
 
 ### ENDPOINTS
 
-***GET /business   (Auth Required - get:businesses)***
+***GET /businesses   (Auth Required - get:businesses)***
 
 Get a list of all the business in the app showing non confidential information
 
-example `/business`
+example `/businesses`
+
+response
+```
+{
+  "businesses": [
+    {
+      "address": "Street 2",
+      "email": "business2@business2.com",
+      "id": 2,
+      "name": "Business2",
+      "phone": "666666662"
+    },
+    {
+      "address": "Street 4",
+      "email": "business4@business4.com",
+      "id": 4,
+      "name": "Business4_B",
+      "phone": "666666664"
+    }
+}
+```
+
+***GET /businesses/<int:id>   (Auth required - get:business-details)***
+
+Get complete information of a business
+
+example `/businesses/2`   GET
+
+response
+```
+{
+    "address": "Street 2",
+    "email": "business2@business2.com",
+    "id": 2,
+    "name": "Business2",
+    "phone": "666666662"
+}
+```
+
+***POST /businesses   (Auth required - post:business)***
+
+Create a new business
+
+example `/businesses` POST
+
+POST body
+```
+{ 
+    'id':'10',
+    'name': 'business10',
+    'address': 'address10',
+    'phone':'phone10',
+    'cif':'cif10',
+    'email':'business10@business10.com'
+}
+```
+
+response
+```
+{
+  "business": {
+    "address": "address10",
+    "cif": "cif10",
+    "email": "business10@business10.com",
+    "id": 10,
+    "name": "business10",
+    "phone": "phone10"
+  },
+  "status": 200,
+  "success": true
+}
+```
+
+***PATCH /businesses   (Auth required - post:business)***
+
+Edit an existing business
+
+example `/businesses`  PATCH
+
+PATCH body
+```
+{ 
+    'id':'10',
+    'name': 'business10_mod',
+    'address': 'address10_mod',
+    'phone':'phone10',
+    'cif':'cif10',
+    'email':'business10@business10.com'
+}
+```
+
+response
+```
+{
+  "business": {
+    "address": "address10_mod",
+    "cif": "cif10",
+    "email": "business10@business10.com",
+    "id": 10,
+    "name": "business10_mod",
+    "phone": "phone10"
+  },
+  "status": 200,
+  "success": true
+}
+```
+
+
+***DELETE /businesses/<int:id>   (Auth required - delete:business)***
+
+Delete an existing business
+
+example `/businesses/2`  DELETE
+
+response
+```
+{
+  "business": 2,
+  "status": 200,
+  "success": true
+}
+```
+
+
+***GET /customers   (Auth Required - get:customers)***
+
+Get a list of all the customers in the app showing non confidential information
+
+example `/customers`
 
 response
 ```
@@ -199,50 +328,3 @@ response
   "success": true
 }
 ```
-
-***PATCH /businesses   (Auth required - post:business)***
-
-example `/business`  PATCH
-
-PATCH body
-```
-{ 
-    'id':'10',
-    'name': 'business10_mod',
-    'address': 'address10_mod',
-    'phone':'phone10',
-    'cif':'cif10',
-    'email':'business10@business10.com'
-}
-```
-
-response
-```
-{
-  "business": {
-    "address": "address10_mod",
-    "cif": "cif10",
-    "email": "business10@business10.com",
-    "id": 10,
-    "name": "business10_mod",
-    "phone": "phone10"
-  },
-  "status": 200,
-  "success": true
-}
-```
-
-
-***DELETE /businesses/<int:id>   (Auth required - delete:business)***
-
-example `/business/2`  DELETE
-
-response
-```
-{
-  "business": 2,
-  "status": 200,
-  "success": true
-}
-```
-
