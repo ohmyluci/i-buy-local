@@ -144,7 +144,7 @@ def create_app(test_config=None):
 
   @app.route('/businesses/<int:id>', methods=['DELETE'])
   @requires_auth('delete:business')
-  def delete_business(id):
+  def delete_business(,payolad, id):
     business = Business.query.filter(Business.id == id).one_or_none()
 
     if business is None:
