@@ -51,9 +51,9 @@ def create_app(test_config=None):
 
   @app.route('/customers')
   @requires_auth('get:customers')
-  def get_customer(payload):
+  def get_customers(payload):
     customers = Customer.query.all()
-    customers_formatted = [customer.long() for customer in customers]
+    customers_formatted = [customer.short() for customer in customers]
 
     if len(customers) == 0:
         abort(400)
@@ -67,7 +67,7 @@ def create_app(test_config=None):
   
 
   @app.route('/customers/<int:id>')
-  @requires_auth('get:customers-detail')
+  @requires_auth('get:customer-detail')
   def get_customer_by_id(payload, id):
     customer = Customer.query.filter(Customer.id == id).one_or_none()
     if customer is None:
