@@ -336,16 +336,16 @@ response
 }
 ```
 
-***DELETE /businesses/<int:id>   (Auth required - delete:business)***
+***DELETE /customers/<int:id>   (Auth required - delete:customers)***
 
-Delete an existing business
+Delete an existing customer
 
-example `/businesses/2`  DELETE
+example `/customers/3`  DELETE
 
 response
 ```
 {
-  "business": 2,
+  "customer": 3,
   "status": 200,
   "success": true
 }
