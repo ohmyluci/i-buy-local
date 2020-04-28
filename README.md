@@ -126,7 +126,7 @@ The API returns the next error types
 
 ### ENDPOINTS
 
-***GET /business (Auth Required - get:businesses)***
+***GET /business   (Auth Required - get:businesses)***
 
 Get a list of all the business in the app showing non confidential information
 
@@ -153,7 +153,7 @@ response
 }
 ```
 
-***GET /businesses/<int:id> (Auth required: - get:business-details)***
+***GET /businesses/<int:id>   (Auth required - get:business-details)***
 
 example `/business/2`
 
@@ -167,4 +167,37 @@ response
     "phone": "666666662"
 }
 ```
+
+***POST /businesses   (Auth required - post:business)***
+
+example `/business` 
+
+POST body
+```
+{ 
+    'id':'10',
+    'name': 'business10',
+    'address': 'address10',
+    'phone':'phone10',
+    'cif':'cif10',
+    'email':'business10@business10.com'
+}
+
+response
+```
+{
+  "business": {
+    "address": "address10",
+    "cif": "cif10",
+    "email": "business10@business10.com",
+    "id": 10,
+    "name": "business10",
+    "phone": "phone10"
+  },
+  "status": 200,
+  "success": true
+}
+```
+
+
 
