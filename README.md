@@ -149,7 +149,9 @@ response
       "id": 4,
       "name": "Business4_B",
       "phone": "666666664"
-    }
+    }],
+  "status": 200,
+  "success": true
 }
 ```
 
@@ -264,27 +266,30 @@ example `/customers`
 response
 ```
 {
-  "businesses": [
+  "customers": [
     {
-      "address": "Street 2",
-      "email": "business2@business2.com",
-      "id": 2,
-      "name": "Business2",
-      "phone": "666666662"
+      "email": "email@email2.com",
+      "id": 1,
+      "name": "customer 1",
+      "phone": "555555555"
     },
     {
-      "address": "Street 4",
-      "email": "business4@business4.com",
-      "id": 4,
-      "name": "Business4_B",
-      "phone": "666666664"
+      "email": "customer10@customer10.com",
+      "id": 10,
+      "name": "customer10",
+      "phone": "phone10"
     }
+  ],
+  "status": 200,
+  "success": true
 }
 ```
 
-***GET /businesses/<int:id>   (Auth required - get:business-details)***
+***GET /customers/<int:id>   (Auth required - get:customer-details)***
 
-example `/business/2`   GET
+Get complete information of a customer
+
+example `/customers/2`   GET
 
 response
 ```
