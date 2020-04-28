@@ -21,6 +21,7 @@ class IBuyLocalTestCase(unittest.TestCase):
 
         self.BUSINESS_TOKEN = os.environ.get('BUSINESS_TOKEN')
         self.CUSTOMER_TOKEN = os.environ.get('CUSTOMER_TOKEN')
+        
 
         unittest.TestLoader.sortTestMethodsUsing = None
 
